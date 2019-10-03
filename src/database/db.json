@@ -15,11 +15,46 @@
   ],
   "products": [
     {
-      "name": "LO",
-      "desc": "LO",
-      "price": "LO",
-      "picture": "LO",
+      "name": "BLACK SHIRT",
+      "desc": "Good Quality",
+      "price": "IDR 300.000",
+      "picture": "http://pluspng.com/img-png/shirt-png-hd-shirt-hd-png-pluspng-com-2050-shirt-hd-png-2050.png",
       "id": 1
+    },
+    {
+      "name": "BLACK SHIRT",
+      "desc": "Good Quality",
+      "price": "IDR 300.000",
+      "picture": "http://pluspng.com/img-png/shirt-png-hd-shirt-hd-png-pluspng-com-2050-shirt-hd-png-2050.png",
+      "id": 2
+    },
+    {
+      "name": "BLACK SHIRT",
+      "desc": "Good Quality ",
+      "price": "IDR 300.000",
+      "picture": "http://pluspng.com/img-png/shirt-png-hd-shirt-hd-png-pluspng-com-2050-shirt-hd-png-2050.png",
+      "id": 3
+    },
+    {
+      "name": "BLACK SHIRT",
+      "desc": "Good Quality",
+      "price": "IDR 300.000",
+      "picture": "http://pluspng.com/img-png/shirt-png-hd-shirt-hd-png-pluspng-com-2050-shirt-hd-png-2050.png",
+      "id": 4
+    },
+    {
+      "name": "BLACK SHIRT",
+      "desc": "Good Quality",
+      "price": "IDR 300.000",
+      "picture": "http://pluspng.com/img-png/shirt-png-hd-shirt-hd-png-pluspng-com-2050-shirt-hd-png-2050.png",
+      "id": 5
+    },
+    {
+      "name": "BLACK SHIRT",
+      "desc": "Good Quality ",
+      "price": "IDR 300.000",
+      "picture": "http://pluspng.com/img-png/shirt-png-hd-shirt-hd-png-pluspng-com-2050-shirt-hd-png-2050.png",
+      "id": 6
     }
   ]
 }

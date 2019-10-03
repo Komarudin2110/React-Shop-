@@ -1,0 +1,21 @@
+.ProductPict {
+    width: 70%
+}
+
+.centerProd {
+    margin-left: 50px !important
+}
+
+.cardSize {
+    text-align: center;
+    height: 400px !important;
+}
+.padDesc, .padName {
+    margin-top: -15px;
+}
+
+
+.btnMinMax {
+    height: 40% !important;
+    width: 10%  ;
+}

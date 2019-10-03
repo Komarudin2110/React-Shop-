@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import axios from 'axios';
 import Swal from 'sweetalert2'
+import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 
 export class ManageProducts extends Component {
     state = {
@@ -124,70 +126,79 @@ export class ManageProducts extends Component {
         }));
     }
     render() {
-        return (
-            // Merender Products
-            <div className="container">
-                <h1 className="display-4 text-center lead">List-Products</h1>
-                <table className="table table-hover text-center mt-5 ">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>NAME</th>
-                            <th>DESC</th>
-                            <th>PRICE</th>
-                            <th>PICTURE</th>
-                            <th>ACTION</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {this.renProducts()}
-                    </tbody>
-                </table>
+        if (this.props.getUsername) {
+            return (
+                // Merender Products
+                <div className="container">
+                    <h1 className="display-4 text-center lead">List-Products</h1>
+                    <table className="table table-hover text-center mt-5 ">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>NAME</th>
+                                <th>DESC</th>
+                                <th>PRICE</th>
+                                <th>PICTURE</th>
+                                <th>ACTION</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {this.renProducts()}
+                        </tbody>
+                    </table>
 
-                {/* Input Products */}
-                <h1 className="display-4 text-center lead">Input Product</h1>
-                <table className="table table-hover text-center mt-5 ">
-                    <thead>
-                        <tr>
-                            <th>NAME</th>
-                            <th>DESC</th>
-                            <th>PRICE</th>
-                            <th>PICTURE</th>
-                            <th>ACTION</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><input placeholder="Input Name" ref={(input) => { this.name = input }} className="form-control" type="text" /></td>
-                            <td><input placeholder="Input Desc" ref={(input) => { this.desc = input }} className="form-control" type="text" /></td>
-                            <td><input placeholder="Input Price" ref={(input) => { this.price = input }} className="form-control" type="text" /></td>
-                            <td><input placeholder="Input Image" ref={(input) => { this.picture = input }} className="form-control" type="text" /></td>
-                            <td><button className="btn btn-success" onClick={this.onAddClick}>Add</button></td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                {/* Tampilan untuk Modals */}
-                <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-                    <ModalHeader toggle={this.toggle}>Edit Product</ModalHeader>
-                    <ModalBody>
-                        <h5>Name</h5>
-                        <input ref={(input) => { this.nameEdit = input }} defaultValue={this.state.namaDef} className="form-control" type="text" />
-                        <h5>Desc</h5>
-                        <input ref={(input) => { this.descEdit = input }} defaultValue={this.state.descDef} className="form-control" type="text" />
-                        <h5>Price</h5>
-                        <input ref={(input) => { this.priceEdit = input }} defaultValue={this.state.priceDef} className="form-control" type="text" />
-                        <h5>Picture</h5>
-                        <input ref={(input) => { this.pictureEdit = input }} defaultValue={this.state.pictureDef} className="form-control" type="text" />
-                    </ModalBody>
-                    <ModalFooter>
-                        <Button color="primary" onClick={() => this.editProduct()}>Edit</Button>{' '}
-                        <Button color="secondary" onClick={this.toggle}>Cancel</Button>
-                    </ModalFooter>
-                </Modal>
-            </div>
-        )
+                    {/* Input Products */}
+                    <h1 className="display-4 text-center lead">Input Product</h1>
+                    <table className="table table-hover text-center mt-5 ">
+                        <thead>
+                            <tr>
+                                <th>NAME</th>
+                                <th>DESC</th>
+                                <th>PRICE</th>
+                                <th>PICTURE</th>
+                                <th>ACTION</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input placeholder="Input Name" ref={(input) => { this.name = input }} className="form-control" type="text" /></td>
+                                <td><input placeholder="Input Desc" ref={(input) => { this.desc = input }} className="form-control" type="text" /></td>
+                                <td><input placeholder="Input Price" ref={(input) => { this.price = input }} className="form-control" type="text" /></td>
+                                <td><input placeholder="Input Image" ref={(input) => { this.picture = input }} className="form-control" type="text" /></td>
+                                <td><button className="btn btn-success" onClick={this.onAddClick}>Add</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    {/* Tampilan untuk Modals */}
+                    <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+                        <ModalHeader toggle={this.toggle}>Edit Product</ModalHeader>
+                        <ModalBody>
+                            <h5>Name</h5>
+                            <input ref={(input) => { this.nameEdit = input }} defaultValue={this.state.namaDef} className="form-control" type="text" />
+                            <h5>Desc</h5>
+                            <input ref={(input) => { this.descEdit = input }} defaultValue={this.state.descDef} className="form-control" type="text" />
+                            <h5>Price</h5>
+                            <input ref={(input) => { this.priceEdit = input }} defaultValue={this.state.priceDef} className="form-control" type="text" />
+                            <h5>Picture</h5>
+                            <input ref={(input) => { this.pictureEdit = input }} defaultValue={this.state.pictureDef} className="form-control" type="text" />
+                        </ModalBody>
+                        <ModalFooter>
+                            <Button color="primary" onClick={() => this.editProduct()}>Edit</Button>{' '}
+                            <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+                        </ModalFooter>
+                    </Modal>
+                </div>
+            )
+        } else {
+            return <Redirect to="/" />
+        }
     }
 }
 
-export default ManageProducts
+const mapStateToProps = (state) => {
+    return {
+        getUsername: state.auth.username
+    }
+}
+
+export default connect(mapStateToProps, null)(ManageProducts)

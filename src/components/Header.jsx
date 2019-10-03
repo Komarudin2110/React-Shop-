@@ -37,7 +37,7 @@ export class Header extends Component {
     // Function untuk merender navbar
     renderNavigation = () => {
         if (!this.props.getUsername) {
-            return (
+            return (    
                 <Nav className="ml-auto" navbar>
                     <NavItem>
                         <NavLink to="/" className="nav-link mx-2">Home</NavLink>
@@ -70,11 +70,12 @@ export class Header extends Component {
                             <DropdownMenu>
                                 <NavLink to='/ManageProducts' className="dropdown-item">Manage Products</NavLink>
                                 <DropdownItem divider />
-                                <NavLink to='/logout' className="dropdown-item" onClick={this.exit}>Logout</NavLink>
+                                <NavLink to='/' className="dropdown-item" onClick={this.exit}>Logout</NavLink>
                             </DropdownMenu>
                         </UncontrolledDropdown>
                     </NavItem>
                 </Nav>
+
             )
         }
 
@@ -85,7 +86,7 @@ export class Header extends Component {
             <div>
                 <Navbar color="light" light expand="md">
                     <div className="container">
-                        <Link to="/" className="navbar-brand">Reactstrap</Link>
+                        <Link to="/login" className="navbar-brand">Reactstrap</Link>
                         <NavbarToggler onClick={this.toggle} />
                         <Collapse isOpen={this.state.isOpen} navbar>
                             {this.renderNavigation()}
@@ -105,4 +106,4 @@ let mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, {LogOut})(Header)
+export default connect(mapStateToProps, { LogOut })(Header)

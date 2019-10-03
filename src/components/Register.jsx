@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import Swal from 'sweetalert2'
+import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 
 export class Register extends Component {
-    
+
     // Function untuk me Register
     onSubmitClick = () => {
         let _username = this.username.value
@@ -51,32 +53,43 @@ export class Register extends Component {
     }
 
     render() {
-        return (
-            <div className='cardcontainer'>
-                <div className='col-6 mx-auto mt-5  card'>
-                    <div className='card-body'>
-                        <div className='border-bottom border-secondary card-title'>
-                            <h1>Register</h1>
+        if (!this.props.username) {
+            return (
+                <div className='cardcontainer'>
+                    <div className='col-6 mx-auto mt-5  card'>
+                        <div className='card-body'>
+                            <div className='border-bottom border-secondary card-title'>
+                                <h1>Register</h1>
+                            </div>
+                            <form className='form-group'>
+                                <div className="card-title">
+                                    <h4 className="">Username</h4>
+                                </div>
+                                <input ref={(input) => { this.username = input }} className="form-control" type='text' />
+                                <div className="card-title">
+                                    <h4>E-mail</h4>
+                                </div>
+                                <input ref={(input) => { this.email = input }} className="form-control" type='email' /> <div className="card-title">
+                                    <h4>Password</h4>
+                                </div>
+                                <input ref={(input) => { this.password = input }} className="form-control" type='password' />
+                            </form>
+                            <button className="btn btn-primary btn-block" onClick={this.onSubmitClick}>Submit</button>
                         </div>
-                        <form className='form-group'>
-                            <div className="card-title">
-                                <h4 className="">Username</h4>
-                            </div>
-                            <input ref={(input) => { this.username = input }} className="form-control" type='text' />
-                            <div className="card-title">
-                                <h4>E-mail</h4>
-                            </div>
-                            <input ref={(input) => { this.email = input }} className="form-control" type='email' /> <div className="card-title">
-                                <h4>Password</h4>
-                            </div>
-                            <input ref={(input) => { this.password = input }} className="form-control" type='password' />
-                        </form>
-                        <button className="btn btn-primary btn-block" onClick={this.onSubmitClick}>Submit</button>
                     </div>
                 </div>
-            </div>
-        )
+            )
+        } else {
+            return (<Redirect to="/" />)
+        }
     }
 }
 
-export default Register
+const mapStateToProps = (state) => {
+    return {
+        username: state.auth.username
+    }
+}
+
+
+export default connect(mapStateToProps, null)(Register)

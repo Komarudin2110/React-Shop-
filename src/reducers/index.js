@@ -2,13 +2,14 @@ import { combineReducers } from 'redux'
 
 let initState = {
     id: 0,
-    username: ''
+    username: '', 
+    password: ''
 }
 
 let authReducer = (state = initState, action) => {
     switch (action.type) {
         case "LOGIN_SUCCESS":
-            return { ...state, id: action.payload.id, username: action.payload.username }
+            return { ...state, id: action.payload.id, username: action.payload.username, password: action.payload.password }
 
         case "LOGOUT_SUCCESS":
             return { ...state, ...initState}
