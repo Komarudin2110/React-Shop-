@@ -1,0 +1,25 @@
+{
+  "users": [
+    {
+      "username": "admin",
+      "email": "admin@gmail.com",
+      "password": "admin",
+      "id": 1
+    },
+    {
+      "username": "komar",
+      "email": "komarudin2110@gmail.com",
+      "password": "komar",
+      "id": 2
+    }
+  ],
+  "products": [
+    {
+      "name": "LO",
+      "desc": "LO",
+      "price": "LO",
+      "picture": "LO",
+      "id": 1
+    }
+  ]
+}

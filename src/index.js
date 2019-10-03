@@ -1,12 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from 'react' // Import dari React
+import ReactDOM from 'react-dom' // Import React DOM
+import App from './components/App' // Import App dari components
+import 'bootstrap/dist/css/bootstrap.min.css' // Import Bootstrap
+import { createStore, applyMiddleware } from 'redux' // Membuat store untuk redux
+import { Provider } from 'react-redux' // Menghubungkan redux ke react
+import reducers from './reducers/index' // Menghubungkan ke file reducers
+import thunk from 'redux-thunk' // Menghubungkan ke redux thunk
 
-ReactDOM.render(<App />, document.getElementById('root'));
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+// Membuat store Redux
+let rduxStore = createStore(reducers, applyMiddleware(thunk))
+
+ReactDOM.render(
+    // Provider agar state redux bisa digunakan ke semua komponen
+    <Provider store={rduxStore}> 
+        <App />
+    </Provider>,
+    document.getElementById('root')
+)
